@@ -28,12 +28,13 @@ object Dependencies {
   val akkaVersion212    = "2.4.16"
   val slf4jVersion      = "1.7.7"
 
-  val kamonCore         = "io.kamon"                  %%  "kamon-core"            % kamonVersion
-  val kamonTestkit      = "io.kamon"                  %%  "kamon-testkit"         % kamonVersion
+  val kamonCore         = "io.kamon"                  %%  "kamon-core"                 % kamonVersion
+  val kamonTestkit      = "io.kamon"                  %%  "kamon-testkit"              % kamonVersion
 
-  val scalatest         = "org.scalatest"             %%  "scalatest"             % "3.0.1"
-  val slf4jApi          = "org.slf4j"                 %   "slf4j-api"             % slf4jVersion
-  val logback           = "ch.qos.logback"            %   "logback-classic"       % "1.0.13"
+  val scalatest         = "org.scalatest"             %%  "scalatest"                  % "3.0.1"
+  val slf4jApi          = "org.slf4j"                 %   "slf4j-api"                  % slf4jVersion
+  val logback           = "ch.qos.logback"            %   "logback-classic"            % "1.0.13"
+  val logstashLogback   = "net.logstash.logback"      %   "logstash-logback-encoder"   % "4.8"
 
 
   def akkaDependency(moduleName: String) = Def.setting {
@@ -44,5 +45,6 @@ object Dependencies {
   }
 
   def compileScope   (deps: ModuleID*): Seq[ModuleID] = deps map (_ % "compile")
+  def optionalScope  (deps: ModuleID*): Seq[ModuleID] = deps map (_ % "optional")
   def testScope      (deps: ModuleID*): Seq[ModuleID] = deps map (_ % "test")
 }
